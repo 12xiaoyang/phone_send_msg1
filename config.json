@@ -1,12 +1,12 @@
 {
-    "Folder_Path": "/storage/emulated/0/Pictures/Screenshots/",
+    "Folder_Path": "",
     "EMAIL_CONFIG": {
         "SMTP_SERVER": "smtp.qq.com",
         "SMTP_PORT": 465,
-        "SMTP_USERNAME": "2080527925@qq.com",
-        "SMTP_PASSWORD": "uslcgvutkshabhfd",
-        "FROM_EMAIL": "2080527925@qq.com",
-        "TO_EMAIL": "2080527925@qq.com",
+        "SMTP_USERNAME": "",
+        "SMTP_PASSWORD": "",
+        "FROM_EMAIL": "",
+        "TO_EMAIL": "",
         "SUBJECT": "Daily Report"
     },
     "SCHEDULE_TIME": {
