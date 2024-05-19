@@ -1,18 +1,18 @@
 {
-    "Folder_Path": "",
+    "Folder_Path": "/storage/emulated/0/Pictures/Screenshots/",
     "EMAIL_CONFIG": {
         "SMTP_SERVER": "smtp.qq.com",
         "SMTP_PORT": 465,
-        "SMTP_USERNAME": "",
-        "SMTP_PASSWORD": "",
-        "FROM_EMAIL": "",
-        "TO_EMAIL": "",
+        "SMTP_USERNAME": "2080527925@qq.com",
+        "SMTP_PASSWORD": "uslcgvutkshabhfd",
+        "FROM_EMAIL": "2080527925@qq.com",
+        "TO_EMAIL": "2080527925@qq.com",
         "SUBJECT": "Daily Report"
     },
     "SCHEDULE_TIME": {
-        "SET_YEAR": 2023,
+        "SET_YEAR": 2024,
         "SET_MONTH": 5,
-        "SET_DAY": 11,
-        "SET_HOUR": 9
+        "SET_DAY": 15,
+        "SET_HOUR": 7
     }
 }

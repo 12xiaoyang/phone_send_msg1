@@ -75,7 +75,10 @@ def daily_report_job1(fold_path):
     done_img = remaining_img + done_img
     if remaining_img:  # 有新的图片才会进行发送
         print(f"当前有{len(remaining_img)}新的图片将会被发送")
-        send_email(report_content, remaining_img)
+        send_email(report_content, remaining_img
+ )
+        print("成功发送")
+
     else:
         print(f"当前有{len(remaining_img)}新的图片将会被发送")
 
