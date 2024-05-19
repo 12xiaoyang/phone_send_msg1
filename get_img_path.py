@@ -68,6 +68,6 @@ def filter_image(folder_path, filter_func=True):  # 默认开启过滤检测
         img_path_filters = filter_image_paths(folder_path, filter_func=time_fileter)
     # 获取到符合要求的图片的名称
     for img_path_filter in img_path_filters:
-        img_paths.append(f"{folder_path}\\{img_path_filter}")
+        img_paths.append(f"{folder_path}/{img_path_filter}")
 
     return img_paths
