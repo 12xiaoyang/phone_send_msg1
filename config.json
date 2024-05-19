@@ -3,10 +3,10 @@
     "EMAIL_CONFIG": {
         "SMTP_SERVER": "smtp.qq.com",
         "SMTP_PORT": 465,
-        "SMTP_USERNAME": "2080527925@qq.com",
-        "SMTP_PASSWORD": "uslcgvutkshabhfd",
-        "FROM_EMAIL": "2080527925@qq.com",
-        "TO_EMAIL": "2080527925@qq.com",
+        "SMTP_USERNAME": "自己的qq@qq.com",
+        "SMTP_PASSWORD": "授权码",
+        "FROM_EMAIL": "自己的qq",
+        "TO_EMAIL": "你要发送的qq最好不要是自己的qq",
         "SUBJECT": "Daily Report"
     },
     "SCHEDULE_TIME": {
