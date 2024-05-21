@@ -3,16 +3,16 @@
     "EMAIL_CONFIG": {
         "SMTP_SERVER": "smtp.qq.com",
         "SMTP_PORT": 465,
-        "SMTP_USERNAME": "自己的qq@qq.com",
-        "SMTP_PASSWORD": "授权码",
-        "FROM_EMAIL": "自己的qq",
-        "TO_EMAIL": "你要发送的qq最好不要是自己的qq",
+        "SMTP_USERNAME": "@qq.com",
+        "SMTP_PASSWORD": "",
+        "FROM_EMAIL": "@qq.com",
+        "TO_EMAIL": "@qq.com",
         "SUBJECT": "Daily Report"
     },
     "SCHEDULE_TIME": {
         "SET_YEAR": 2024,
         "SET_MONTH": 5,
-        "SET_DAY": 15,
-        "SET_HOUR": 7
+        "SET_DAY": 21,
+        "SET_HOUR": 1
     }
 }
