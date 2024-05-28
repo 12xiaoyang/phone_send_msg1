@@ -1,0 +1,24 @@
+{
+    "Folder_Path": "/storage/emulated/0/Pictures/Screenshots/",
+    "DEBUG": {
+        "ENABLE_LOGGING": true,
+        "LOG_LEVEL": "INFO",
+        "LOG_FORMAT": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        "LOG_FILE": "app.log"
+    },
+    "EMAIL_CONFIG": {
+        "SMTP_SERVER": "smtp.qq.com",
+        "SMTP_PORT": 465,
+        "SMTP_USERNAME": "2080527925@qq.com",
+        "SMTP_PASSWORD": "uslcgvutkshabhfd",
+        "FROM_EMAIL": "2080527925@qq.com",
+        "TO_EMAIL": "2080527925@qq.com",
+        "SUBJECT": "Daily Report"
+    },
+    "SCHEDULE_TIME": {
+        "SET_YEAR": 2024,
+        "SET_MONTH": 5,
+        "SET_DAY": 14,
+        "SET_HOUR": 1
+    }
+}
