@@ -1,37 +1,31 @@
 """
 主程序用来发送电脑发送图片
 """
+import time
 
+from Utils import Utils
+from Configuration import ConfigManager
+from EmailSender import EmailSender
 import logging
-import schedule
-from send_img_phone import daily_report_job1
-from load_config import load_config_file
-
-# 设置日志
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def run_scheduled_tasks():
-    """
-    运行定时任务
-    """
+def main():
+    # 清除logging的hander
+    for handler in logging.root.handlers[:]:
+        logging.root.removeHandler(handler)
+    modify_config = input("是否需要修改配置文件 如果需要请输入yes 否则任意键退出 .....\n")
+    if modify_config == "yes":
+        ConfigManager.initialize_config(ConfigManager())
+    config = Utils.load_config_file("config.json")
+    Utils.setup_logging(config)
+    image_folder = config["Folder_Path"]
+    emailSender = EmailSender()
     while True:
-        schedule.run_pending()
+        emailSender.daily_report_job(image_folder)
+        time.sleep(60)
 
 
 if __name__ == "__main__":
-    try:
-        logging.info("Initializing scheduled tasks...")
+    main()
 
-        # 读取配置文件
-        config = load_config_file("config.json")
-        folder_path = config["Folder_Path"]
-
-        # 定义定时任务
-        schedule.every(1).minutes.do(daily_report_job1, folder_path)
-
-        # 运行定时任务
-        run_scheduled_tasks()
-
-    except Exception as e:
-        logging.error(f"An error occurred: {e}")
+# /storage/emulated/0/Pictures/Screenshots/
