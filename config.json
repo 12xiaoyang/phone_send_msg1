@@ -1,7 +1,7 @@
 {
-    "Folder_Path": "/storage/emulated/0/Pictures/Screenshots/",
+    "Folder_Path": "C:\\Users\\admin1\\Pictures\\Saved Pictures",
     "DEBUG": {
-        "ENABLE_LOGGING": true,
+        "ENABLE_LOGGING": false,
         "LOG_LEVEL": "INFO",
         "LOG_FORMAT": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         "LOG_FILE": "app.log"
@@ -9,10 +9,10 @@
     "EMAIL_CONFIG": {
         "SMTP_SERVER": "smtp.qq.com",
         "SMTP_PORT": 465,
-        "SMTP_USERNAME": "@qq.com",
-        "SMTP_PASSWORD": "",
-        "FROM_EMAIL": "@qq.com",
-        "TO_EMAIL": "@qq.com",
+        "SMTP_USERNAME": "2080527925@qq.com",
+        "SMTP_PASSWORD": "uslcgvutkshabhfd",
+        "FROM_EMAIL": "2080527925@qq.com",
+        "TO_EMAIL": "2080527925@qq.com",
         "SUBJECT": "Daily Report"
     },
     "SCHEDULE_TIME": {
