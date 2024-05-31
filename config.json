@@ -1,5 +1,5 @@
 {
-    "Folder_Path": "C:\\Users\\admin1\\Pictures\\Saved Pictures",
+    "Folder_Path": "/storage/emulated/0/Pictures/Screenshots/",
     "DEBUG": {
         "ENABLE_LOGGING": false,
         "LOG_LEVEL": "INFO",
