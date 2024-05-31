@@ -1,10 +1,12 @@
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.image import MIMEImage
+from email.mime.base import MIMEBase
+from email import encoders
 import ssl
 import logging
 import os
+import zipfile
 from Utils import Utils
 from Configuration import ConfigManager
 from ImagePathFilter import ImagePathFilter
@@ -29,11 +31,11 @@ class EmailSender:
         # 设置日志
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    def send_email(self, report_content, image_paths):
+    def send_email(self, report_content, zip_path):
         """
-        发送包含文本和图片附件的邮件
+        发送包含文本和压缩文件附件的邮件
         """
-        logging.info("准备发送邮件，附件数量: %d", len(image_paths))
+        logging.info("准备发送邮件，附件: %s", zip_path)
 
         msg = MIMEMultipart()
         msg['From'] = self.FROM_EMAIL
@@ -43,17 +45,18 @@ class EmailSender:
         # 附加邮件正文
         msg.attach(MIMEText(report_content, 'plain', 'utf-8'))
 
-        # 添加图片附件
-        for image_path in image_paths:
-            try:
-                with open(image_path, 'rb') as img_file:
-                    img = MIMEImage(img_file.read())
-                    img.add_header('Content-Disposition', 'attachment', filename=os.path.basename(image_path))
-                    msg.attach(img)
-                    logging.info("附件添加成功: %s", image_path)
-            except FileNotFoundError:
-                logging.error("图片文件未找到: %s", image_path)
-                continue
+        # 添加压缩文件附件
+        try:
+            with open(zip_path, 'rb') as zip_file:
+                part = MIMEBase('application', 'octet-stream')
+                part.set_payload(zip_file.read())
+                encoders.encode_base64(part)
+                part.add_header('Content-Disposition', 'attachment', filename=os.path.basename(zip_path))
+                msg.attach(part)
+                logging.info("附件添加成功: %s", zip_path)
+        except FileNotFoundError:
+            logging.error("压缩文件未找到: %s", zip_path)
+            return
 
         # 连接到SMTP服务器并发送邮件
         try:
@@ -65,7 +68,6 @@ class EmailSender:
         except smtplib.SMTPException as e:
             logging.error("发送邮件失败: %s", e)
 
-    # @staticmethod
     def daily_report_job(self, folder_path):
         """
         执行每日报告任务，发送包含新图片的邮件
@@ -94,11 +96,18 @@ class EmailSender:
             self.done_img = remaining_img + self.done_img
             if remaining_img:  # 有新的图片才会进行发送
                 logging.info("当前有 %d 新的图片将会被发送", len(remaining_img))
-                self.send_email(report_content, remaining_img)
+
+                # 压缩图片文件夹
+                zip_path = 'images.zip'
+                with zipfile.ZipFile(zip_path, 'w') as zipf:
+                    for img in remaining_img:
+                        zipf.write(img, os.path.basename(img))
+                logging.info("图片文件夹压缩成功: %s", zip_path)
+
+                self.send_email(report_content, zip_path)
                 logging.info("成功发送")
+                print("zip was sent successfully ok!")
             else:
                 logging.info("当前没有新的图片需要发送")
         except Exception as e:
             logging.error("处理图片时出错: %s", e)
-
-
